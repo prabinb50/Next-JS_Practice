@@ -37,8 +37,8 @@
 // }
 
 import { getAllCategory } from '@/actions/category';
-import CreateComponent from '@/components/website/CreateComponent';
-import TestComponent from '@/components/website/TestComponent';
+import CreateComponent from '@/components/dashboard/CreateComponent';
+import TestComponent from '@/components/dashboard/TestComponent';
 
 export default async function CategoriesPage() {
 
@@ -61,7 +61,6 @@ export default async function CategoriesPage() {
                 {response.data?.map((category) => (
                     <div key={category.id}>
                         {category.name}
-                        {category.description}
                     </div>
                 ))}
             </div>

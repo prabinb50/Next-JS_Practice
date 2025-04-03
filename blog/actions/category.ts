@@ -1,17 +1,18 @@
 "use server";
+import { CategorySchema } from "@/components/dashboard/CreateComponent";
 import { db } from "@/lib/db/drizzle";
 import { cateoryTable } from "@/lib/db/schema";
 import { eq } from "drizzle-orm";
 import { revalidatePath } from "next/cache";
 
 // interface for category
-interface ICategory {
-    name: string;
-    description: string;
-};
+// interface ICategory {
+//     name: string;
+//     description: string;
+// };
 
 // Create a new category
-export const createCategory = async (categoryData: ICategory) => {
+export const createCategory = async (categoryData: CategorySchema) => {
     try {
         const response = await db.insert(cateoryTable).values(categoryData);
 
@@ -93,7 +94,7 @@ export const getCategoryById = async (id: number) => {
 };
 
 // Update a category by ID
-export const updateCategory = async (id: number, categoryData: ICategory) => {
+export const updateCategory = async (id: number, categoryData: CategorySchema) => {
     try {
         // check if category exists or not
         const categoryExists = await db.select().from(cateoryTable).where(eq(cateoryTable.id, id));
